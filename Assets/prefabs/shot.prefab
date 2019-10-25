@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isEnemyShot: 0
+  childGameObject: {fileID: 7473419512280437531}
 --- !u!114 &7473419512280437537
 MonoBehaviour:
   m_ObjectHideFlags: 0
