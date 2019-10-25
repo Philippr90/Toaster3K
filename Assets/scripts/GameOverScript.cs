@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Start or quit the game
@@ -9,16 +10,16 @@ using UnityEngine.UI;
 public class GameOverScript : MonoBehaviour
 {
     private Button[] buttons;
-    private Text text;
+    private Text[] text;
 
     void Awake()
     {
         // Get the buttons
         buttons = GetComponentsInChildren<Button>();
-        text = GetComponentInChildren<Text>();
+        text = GetComponentsInChildren<Text>();
         // Disable them
         HideButtons();
-        text.gameObject.SetActive(false);
+        HideText();
     }
 
     public void HideButtons()
@@ -28,14 +29,24 @@ public class GameOverScript : MonoBehaviour
             b.gameObject.SetActive(false);
         }
     }
+    public void HideText()
+    {
+        foreach (var t in text)
+        {
+            t.gameObject.SetActive(false);
+        }
+    }
 
     public void ShowButtons(bool win)
     {
         if(win)
         {
-            text.text = "You Win!";
+            text[0].text = "You Win!";
         }
-        text.gameObject.SetActive(true);
+        foreach (var t in text)
+        {
+            t.gameObject.SetActive(true);
+        }
         foreach (var b in buttons)
         {
             b.gameObject.SetActive(true);
@@ -47,10 +58,12 @@ public class GameOverScript : MonoBehaviour
         // Reload the level
         Application.LoadLevel("Menu");
     }
-
+    
     public void RestartGame()
     {
         // Reload the level
-        Application.LoadLevel("Stage1");
+        //Application.LoadLevel("Stage1");
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
