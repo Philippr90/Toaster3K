@@ -22,6 +22,11 @@ public class MenuScript : MonoBehaviour
             Application.LoadLevel("Stage2");
         }
     }
+
+    public void Start2PlayerGame()
+    {
+        Application.LoadLevel("Stage3");
+    }
     
     // Start is called before the first frame update
     void Start()

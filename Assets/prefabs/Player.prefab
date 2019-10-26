@@ -461,8 +461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 5, y: 5}
-  plane: {fileID: 21300000, guid: 5b1acd85e90e5ed498a7dceb3bcdccde, type: 3}
-  spaceship: {fileID: 21300000, guid: 532ef623bf795004cbdfbbd68055fb18, type: 3}
 --- !u!114 &114626628776303902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,9 +473,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80731116b55b5e349b69500390e52cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 7473419512280437542, guid: e71299555c68389459253a99d9fdd332,
+  shotPrefab: {fileID: 7473419512280437542, guid: 1ddfc7ec1ffe3184b9b410d1ff19c373,
+    type: 3}
+  expShotPrefab: {fileID: 7473419512280437542, guid: 7b7a2ae0101f4254f9213a01da747abf,
     type: 3}
   shootingRate: 0.25
+  shootingRateExp: 1
 --- !u!114 &114227765400731168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,5 +491,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b45c8430d6e6674ca6c1d95271789df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 10
   isEnemy: 0

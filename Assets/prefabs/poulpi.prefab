@@ -45,7 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 7473419512280437542, guid: 2307c7b69e66d6045b2f02a4cebcac85,
     type: 3}
+  expShotPrefab: {fileID: 0}
   shootingRate: 0.4
+  shootingRateExp: 1
 --- !u!1 &4985579059385537123
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b45c8430d6e6674ca6c1d95271789df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 2
   isEnemy: 1
 --- !u!114 &114912226420800054
 MonoBehaviour:

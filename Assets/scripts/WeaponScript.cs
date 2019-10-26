@@ -14,22 +14,24 @@ public class WeaponScript : MonoBehaviour
     /// <summary>
     /// Projectile prefab for shooting
     /// </summary>
-    public Transform shotPrefab;
+    public Transform shotPrefab, expShotPrefab;
 
     /// <summary>
     /// Cooldown in seconds between two shots
     /// </summary>
     public float shootingRate = 0.25f;
+    public float shootingRateExp = 1f;
 
     //--------------------------------
     // 2 - Cooldown
     //--------------------------------
 
-    private float shootCooldown;
+    private float shootCooldown, CooldownExp;
 
     void Start()
     {
         shootCooldown = 0f;
+        CooldownExp = 0f;
     }
 
     void Update()
@@ -37,6 +39,10 @@ public class WeaponScript : MonoBehaviour
         if (shootCooldown > 0)
         {
             shootCooldown -= Time.deltaTime;
+        }
+        if (CooldownExp > 0)
+        {
+            CooldownExp -= Time.deltaTime;
         }
     }
 
@@ -47,9 +53,9 @@ public class WeaponScript : MonoBehaviour
     /// <summary>
     /// Create a new projectile if possible
     /// </summary>
-    public void Attack(bool isEnemy)
+    public void Attack(bool isEnemy, bool isExplosive)
     {
-        if (CanAttack)
+        if (CanAttack && !isExplosive)
         {
             shootCooldown = shootingRate;
 
@@ -72,6 +78,24 @@ public class WeaponScript : MonoBehaviour
             {
                 move.direction = this.transform.right; // towards in 2D space is the right of the sprite
             }
+        }else if(CanAttackExp && isExplosive){
+            CooldownExp = shootingRateExp;
+
+            var shotTransform = Instantiate(expShotPrefab) as Transform;
+
+            shotTransform.position = transform.position;
+
+            ShotScript shot = shotTransform.gameObject.GetComponent<ShotScript>();
+            if (shot != null)
+            {
+                shot.explosiveMissile = isExplosive;
+            }
+
+            MoveScript move = shotTransform.gameObject.GetComponent<MoveScript>();
+            if (move != null)
+            {
+                move.direction = this.transform.right;
+            }
         }
     }
 
@@ -83,6 +107,13 @@ public class WeaponScript : MonoBehaviour
         get
         {
             return shootCooldown <= 0f;
+        }
+    }
+    public bool CanAttackExp
+    {
+        get
+        {
+            return CooldownExp <= 0f;
         }
     }
 }

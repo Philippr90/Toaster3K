@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7473419512280437530}
   - component: {fileID: 7473419512280437537}
   m_Layer: 0
-  m_Name: shot
+  m_Name: shotExplode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7473419512280437531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.253487, y: 0.7179836, z: -0.140625}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -39542503
   m_SortingLayer: -2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ad82458eb5794ca4182048c64c917de9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b16333a37b0b76408b4f31b3a99ef6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.23, y: 0.78}
+    oldSize: {x: 12.8, y: 12.8}
     newSize: {x: 1.23, y: 0.78}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -142,11 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e95a7cd94aa9367468128e10dbe14451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   isEnemyShot: 0
   childGameObject: {fileID: 8942593694010299566, guid: 6b36904be2fc69944b3f3da91848d382,
     type: 3}
-  explosiveMissile: 0
+  explosiveMissile: 1
 --- !u!114 &7473419512280437537
 MonoBehaviour:
   m_ObjectHideFlags: 0

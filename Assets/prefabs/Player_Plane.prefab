@@ -324,7 +324,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 7473419512280437542, guid: e71299555c68389459253a99d9fdd332,
     type: 3}
-  shootingRate: 0.5
+  expShotPrefab: {fileID: 7473419512280437542, guid: 7b7a2ae0101f4254f9213a01da747abf,
+    type: 3}
+  shootingRate: 0.4
+  shootingRateExp: 1
 --- !u!114 &114227765400731168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,5 +340,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b45c8430d6e6674ca6c1d95271789df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 10
   isEnemy: 0

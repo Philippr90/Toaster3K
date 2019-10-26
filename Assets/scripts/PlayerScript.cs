@@ -11,23 +11,38 @@ public class PlayerScript : MonoBehaviour
     /// 1 - The speed of the ship
     /// </summary>
     public Vector2 speed = new Vector2(50, 50);
+    public bool isPlayer2 = false;
 
     // 2 - Store the movement and the component
     private Vector2 movement;
     private Rigidbody2D rigidbodyComponent;
+    private string horizontal, vertical, fire1, fire2;
 
     // Start is called before the first frame update
     void Start()
-    {
-
+    {        
+        if (!isPlayer2)
+        {
+            horizontal = "Horizontal";
+            vertical = "Vertical";
+            fire1 = "Fire1";
+            fire2 = "Fire2";
+        }
+        else
+        {
+            horizontal = "Horizontal_P2";
+            vertical = "Vertical_P2";
+            fire1 = "Fire1_P2";
+            fire2 = "Fire2_P2";
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // 3 - Retrieve axis information
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+        float inputX = Input.GetAxis(horizontal);
+        float inputY = Input.GetAxis(vertical);
 
         // 4 - Movement per direction
         movement = new Vector2(
@@ -35,8 +50,8 @@ public class PlayerScript : MonoBehaviour
             speed.y * inputY);
 
         // 5 - Shooting
-        bool shoot = Input.GetButtonDown("Fire1");
-        shoot |= Input.GetButtonDown("Fire2");
+        bool shoot = Input.GetButtonDown(fire1);
+        bool shootExp = Input.GetButtonDown(fire2);
         // Careful: For Mac users, ctrl + arrow is a bad idea
 
         if (shoot)
@@ -45,7 +60,17 @@ public class PlayerScript : MonoBehaviour
             if (weapon != null)
             {
                 // false because the Player is not an enemy
-                weapon.Attack(false);
+                weapon.Attack(false, false);
+                SoundEffectsHelper.Instance.MakePlayerShotSound();
+            }
+        }
+        if (shootExp)
+        {
+            WeaponScript weapon = GetComponent<WeaponScript>();
+            if (weapon != null)
+            {
+                // false because the Player is not an enemy
+                weapon.Attack(false, true);
                 SoundEffectsHelper.Instance.MakePlayerShotSound();
             }
         }

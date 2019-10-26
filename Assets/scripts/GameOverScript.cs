@@ -56,13 +56,13 @@ public class GameOverScript : MonoBehaviour
     public void ExitToMenu()
     {
         // Reload the level
-        Application.LoadLevel("Menu");
+        //Application.LoadLevel("Menu");
+        SceneManager.LoadScene("Menu");
     }
     
     public void RestartGame()
     {
         // Reload the level
-        //Application.LoadLevel("Stage1");
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

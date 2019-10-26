@@ -98,7 +98,7 @@ public class BossScript : MonoBehaviour
                 {
                     if (weapon != null && weapon.enabled && weapon.CanAttack)
                     {
-                        weapon.Attack(true);
+                        weapon.Attack(true, false);
                         SoundEffectsHelper.Instance.MakeEnemyShotSound();
                     }
                 }
